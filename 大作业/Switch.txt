@@ -1,0 +1,213 @@
+Building configuration...
+
+Current configuration : 3344 bytes
+!
+version 12.2(37)SE1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Switch
+!
+!
+!
+ip dhcp excluded-address 192.168.10.254
+ip dhcp excluded-address 192.168.20.254
+ip dhcp excluded-address 192.168.30.254
+ip dhcp excluded-address 192.168.40.254
+!
+ip dhcp pool vlan10
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.254
+ dns-server 192.168.50.1
+ip dhcp pool vlan20
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.254
+ dns-server 192.168.50.1
+ip dhcp pool vlan30
+ network 192.168.30.0 255.255.255.0
+ default-router 192.168.30.254
+ dns-server 192.168.50.1
+ip dhcp pool vlan40
+ network 192.168.40.0 255.255.255.0
+ default-router 192.168.40.254
+ dns-server 192.168.50.1
+ip dhcp pool 10
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.254
+ dns-server 192.168.50.1
+ip dhcp pool 20
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.254
+ dns-server 192.168.50.1
+ip dhcp pool 30
+ network 192.168.30.0 255.255.255.0
+ default-router 192.168.30.254
+ dns-server 192.168.50.1
+ip dhcp pool 40
+ network 192.168.40.0 255.255.255.0
+ default-router 192.168.40.254
+ dns-server 192.168.50.1
+!
+!
+ip routing
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ switchport access vlan 10
+ no cdp enable
+!
+interface FastEthernet0/2
+ switchport access vlan 20
+ no cdp enable
+!
+interface FastEthernet0/3
+ switchport access vlan 30
+ no cdp enable
+!
+interface FastEthernet0/4
+ switchport access vlan 40
+ no cdp enable
+!
+interface FastEthernet0/5
+ no switchport
+ ip address 192.168.1.2 255.255.255.0
+ duplex auto
+ speed auto
+ no cdp enable
+!
+interface FastEthernet0/6
+ switchport access vlan 50
+ no cdp enable
+!
+interface FastEthernet0/7
+ no cdp enable
+!
+interface FastEthernet0/8
+ no cdp enable
+!
+interface FastEthernet0/9
+ no cdp enable
+!
+interface FastEthernet0/10
+ no cdp enable
+!
+interface FastEthernet0/11
+ no cdp enable
+!
+interface FastEthernet0/12
+ no cdp enable
+!
+interface FastEthernet0/13
+ no cdp enable
+!
+interface FastEthernet0/14
+ no cdp enable
+!
+interface FastEthernet0/15
+ no cdp enable
+!
+interface FastEthernet0/16
+ no cdp enable
+!
+interface FastEthernet0/17
+ no cdp enable
+!
+interface FastEthernet0/18
+ no cdp enable
+!
+interface FastEthernet0/19
+ no cdp enable
+!
+interface FastEthernet0/20
+ no cdp enable
+!
+interface FastEthernet0/21
+ no cdp enable
+!
+interface FastEthernet0/22
+ no cdp enable
+!
+interface FastEthernet0/23
+ no cdp enable
+!
+interface FastEthernet0/24
+ no cdp enable
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ mac-address 0005.5eea.b501
+ ip address 192.168.10.254 255.255.255.0
+!
+interface Vlan20
+ mac-address 0005.5eea.b502
+ ip address 192.168.20.254 255.255.255.0
+!
+interface Vlan30
+ mac-address 0005.5eea.b503
+ ip address 192.168.30.254 255.255.255.0
+!
+interface Vlan40
+ mac-address 0005.5eea.b504
+ ip address 192.168.40.254 255.255.255.0
+!
+interface Vlan50
+ mac-address 0005.5eea.b505
+ ip address 192.168.50.254 255.255.255.0
+!
+router rip
+ network 192.168.1.0
+ network 192.168.10.0
+ network 192.168.20.0
+ network 192.168.30.0
+ network 192.168.40.0
+ network 192.168.50.0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+!
+end

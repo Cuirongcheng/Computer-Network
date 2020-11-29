@@ -1,0 +1,107 @@
+Building configuration...
+
+Current configuration : 1312 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX152450R0
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 192.168.1.1 255.255.255.0
+ ip access-group 1 in
+ ip nat inside
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/0/0
+ ip address 131.1.0.253 255.255.0.0
+ ip nat outside
+ clock rate 2000000
+!
+interface Serial0/0/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router rip
+ network 131.1.0.0
+ network 192.168.1.0
+!
+ip nat inside source static 192.168.10.1 131.1.0.1 
+ip nat inside source static 192.168.20.1 131.1.0.2 
+ip nat inside source static 192.168.30.1 131.1.0.3 
+ip nat inside source static 192.168.40.1 131.1.0.4 
+ip classless
+ip route 0.0.0.0 0.0.0.0 131.1.0.254 
+!
+ip flow-export version 9
+!
+!
+access-list 1 deny host 192.168.10.2
+access-list 1 deny host 192.168.20.2
+access-list 1 deny host 192.168.30.2
+access-list 1 deny host 192.168.40.2
+access-list 1 permit any
+!
+no cdp run
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
